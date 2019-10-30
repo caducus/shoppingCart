@@ -11,6 +11,7 @@ require("dotenv").config();
 const itemsController = require("./controllers/items.js")
 
 const app = express();
+const db = mongoose.connection;
 
 // =========================
 // Configurations
@@ -25,6 +26,11 @@ mongoose.connection.once("open", () => {
   console.log("Connected to Mongoose.");
 });
 
+// error and success messages
+db.on("error", (error) => console.log(error.message + ' is Mongod not running?'));
+db.on("connected", () => console.log("mongo connected: ", MONGODB_URI));
+db.on("disconnected", () => console.log("mongo disconnected"));
+
 // ==========================
 // Fix Deprecation Warnings
 // ==========================
@@ -37,6 +43,7 @@ mongoose.set("useCreateIndex", true);
 // ==========================
 
 app.use(express.static("public"));
+app.use(express.json());
 
 // paths for controllers
 app.use("/items", itemsController);
