@@ -5,6 +5,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 
+require("dotenv").config();
+
 const app = express();
 
 // =========================
@@ -16,7 +18,7 @@ const port = process.env.PORT || 3000;
 const MONGODB_URI = process.env.MONGODB_URI;
 
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true});
-moongose.connection.once("open", () => {
+mongoose.connection.once("open", () => {
   console.log("Connected to Mongoose.");
 });
 
