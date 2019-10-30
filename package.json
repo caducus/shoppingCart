@@ -1,0 +1,20 @@
+{
+  "name": "shoppingcart",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caducus/shoppingCart.git"
+  },
+  "author": "R. Catanzaro & Y. Chong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/caducus/shoppingCart/issues"
+  },
+  "homepage": "https://github.com/caducus/shoppingCart#readme"
+}
