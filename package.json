@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/caducus/shoppingCart/issues"
   },
-  "homepage": "https://github.com/caducus/shoppingCart#readme"
+  "homepage": "https://github.com/caducus/shoppingCart#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.7.7"
+  }
 }
