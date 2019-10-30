@@ -7,6 +7,9 @@ const mongoose = require("mongoose");
 
 require("dotenv").config();
 
+// Controllers
+const itemsController = require("./controller/items.js")
+
 const app = express();
 
 // =========================
@@ -34,6 +37,9 @@ mongoose.set("useCreateIndex", true);
 // ==========================
 
 app.use(express.static("public"));
+
+// paths for controllers
+app.use("/items", itemsController);
 
 // ==========================
 // Listener
