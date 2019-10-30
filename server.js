@@ -8,7 +8,7 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 // Controllers
-const itemsController = require("./controller/items.js")
+const itemsController = require("./controllers/items.js")
 
 const app = express();
 
