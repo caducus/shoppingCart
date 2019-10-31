@@ -8,7 +8,9 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 // Controllers
-const itemsController = require("./controllers/items.js")
+const itemsController = require("./controllers/items.js");
+const sessionsController = require("./controllers/sessions.js");
+const usersController = require("./controllers/users.js");
 
 const app = express();
 const db = mongoose.connection;
@@ -47,6 +49,23 @@ app.use(express.json());
 
 // paths for controllers
 app.use("/items", itemsController);
+app.use("/sessions", sessionsController);
+app.use("/users", usersController);
+
+// ==========================
+// Routes
+// ==========================
+
+app.get("/loggedin", (req, res) => {
+  if (req.session.currentUser) {
+    res.json(req.session.currentUser);
+  } else {
+    res.status(401).json ({
+      status: 401,
+      message: "not logged in"
+    });
+  };
+});
 
 // ==========================
 // Listener
