@@ -27,6 +27,7 @@ app.controller("MainController", ["$http", function($http) {
       }
     }).then(function(response) {
       console.log(response.data);
+      controller.getItems();
     }, function(error) {
       console.log(error);
     });
@@ -60,5 +61,7 @@ app.controller("MainController", ["$http", function($http) {
       console.log(error);
     });
   };
+
+  this.getItems();
 
 }]);
