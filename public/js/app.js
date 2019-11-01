@@ -29,7 +29,7 @@ app.controller("MainController", ["$http", function($http) {
               username: this.username,
               password: this.password
       }
-    }).then(function (reponse) {
+    }).then(function (response) {
       console.log(response.data);
       this.username = null;
       this.password = null;
