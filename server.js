@@ -4,6 +4,7 @@
 
 const express = require("express");
 const mongoose = require("mongoose");
+const session = require("express-session")
 
 require("dotenv").config();
 
@@ -23,7 +24,7 @@ const port = process.env.PORT || 3000;
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true});
+mongoose.connect(MONGODB_URI, {useUnifiedTopology: true, useNewUrlParser: true});
 mongoose.connection.once("open", () => {
   console.log("Connected to Mongoose.");
 });
@@ -46,6 +47,11 @@ mongoose.set("useCreateIndex", true);
 
 app.use(express.static("public"));
 app.use(express.json());
+app.use(session({
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: false
+}));
 
 // paths for controllers
 app.use("/items", itemsController);
