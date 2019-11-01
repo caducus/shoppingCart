@@ -15,6 +15,7 @@ const User = require("../models/users.js");
 router.post("/", (req, res) => {
   User.findOne({username: req.body.username}, (error, foundUser) => {
     if(bcrypt.compareSync(req.body.password, foundUser.password)) {
+      req.session.currentUser = foundUser;
       res.status(201).json({
         status: 201,
         message: "user session created"
@@ -26,7 +27,7 @@ router.post("/", (req, res) => {
       });
     };
   });
-
+});
 // ==========================
 // Delete Route
 // ==========================
