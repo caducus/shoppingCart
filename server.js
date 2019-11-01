@@ -24,7 +24,7 @@ const port = process.env.PORT || 3000;
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
-mongoose.connect(MONGODB_URI, {useUnifiedTopology: true, useNewUrlParser: true});
+mongoose.connect(MONGODB_URI, { useUnifiedTopology: true, useNewUrlParser: true });
 mongoose.connection.once("open", () => {
   console.log("Connected to Mongoose.");
 });

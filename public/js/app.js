@@ -12,11 +12,11 @@ app.controller("MainController", ["$http", function($http) {
               password: this.createdPassword,
               isAdmin: false
       }
-    }).then(function (response) {
+    }).then(function(response) {
       console.log(response.data);
-      this.createdUsername = null;
-      this.createdPassword = null;
-    }, function (error) {
+      controller.createdUsername = null;
+      controller.createdPassword = null;
+    }, function(error) {
       console.log(error);
     });
   };
@@ -29,11 +29,35 @@ app.controller("MainController", ["$http", function($http) {
               username: this.username,
               password: this.password
       }
-    }).then(function (response) {
+    }).then(function(response) {
       console.log(response.data);
-      this.username = null;
-      this.password = null;
-    }, function (error) {
+      controller.isLoggedIn();
+      controller.username = null;
+      controller.password = null;
+    }, function(error) {
+      console.log(error);
+    });
+  };
+
+  this.logOut = function () {
+    $http({
+      method: "DELETE",
+      url: "/sessions"
+    }).then(function(response) {
+      console.log(response.data);
+    }, function(error) {
+      console.log(error);
+    });
+  };
+
+  this.isLoggedIn = function () {
+    $http({
+      method: "GET",
+      url: "/loggedin"
+    }).then(function(response) {
+      console.log("I am a user, hear me roar!");
+      controller.loggedInUser = response.data.username;
+    }, function(error) {
       console.log(error);
     });
   };
@@ -42,9 +66,9 @@ app.controller("MainController", ["$http", function($http) {
     $http({
       method: "GET",
       url: "/items"
-    }).then(function (response) {
+    }).then(function(response) {
       controller.items = response.data;
-    }, function (error) {
+    }, function(error) {
       console.log(error);
     });
   };

@@ -2,46 +2,79 @@
 <html lang="en" dir="ltr" ng-app="shoppingCart">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>The Cat Emporium</title>
+    <!-- ======================
+    | | SCRIPTS
+    ======================= -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js" charset="utf-8"></script>
     <script src="/js/app.js" charset="utf-8"></script>
+    <!-- ======================
+    | | STYLESHEETS
+    ======================= -->
+    <link rel="stylesheet" href="css/main.css">
   </head>
   <body ng-controller="MainController as ctrl">
-    <div>
-      <h3>Sign Up</h3>
-      <form ng-submit="ctrl.createUser()">
-        Username: <input type="text" ng-model="ctrl.createdUsername" />
-        Password: <input type="password" ng-model="ctrl.createdPassword" />
-        <input type="submit" value="Create"/>
-      </form>
-      <h3>Log In</h3>
-      <form ng-submit="ctrl.logIn()">
-        Username: <input type="text" ng-model="ctrl.username" />
-        Password: <input type="password" ng-model="ctrl.password" />
-        <input type="submit" value="Log In" />
-      </form>
-    </div>
-    <div>
-      <h3>Add an Item</h3>
-      <form ng-submit="ctrl.addItem()">
-        Name <input type="text" ng-model="ctrl.name"/>
-        Description <input type="text" ng-model="ctrl.description"/>
-        Cost <input type="number" ng-model="ctrl.cost"/>
-        Image <input type="text" ng-model="ctrl.image"/>
-        In Stock <input type="checkbox" ng-model="ctrl.inStock"/>
-        <input type="submit" value="add item" />
-      </form>
-    </div>
-    <div class="showAllItems">
-      <div ng-repeat="item in ctrl.items">
+    <!-- ======================
+    | | HEADER
+    ======================= -->
+    <header>
+      <h1>The Cat Emporium</h1>
+    </header>
+    <!-- ======================
+    | | MAIN
+    ======================= -->
+    <main>
+      <!-- ===== NAVIGATION ===== -->
+      <nav>
         <ul>
-          <li>{{ item.name }}</li>
-          <li>{{ item.description }}</li>
-          <li>{{ item.cost }}</li>
-          <li>{{ item.image }}</li>
-          <li>{{ item.inStock }}</li>
+          <li ng-if="!ctrl.loggedInUser">Sign Up</li>
+          <li ng-if="!ctrl.loggedInUser">Log In</li>
+          <li ng-if="ctrl.loggedInUser"
+              ng-click="ctrl.logOut()">Log Out</li>
         </ul>
+      </nav>
+      <div>
+        <h3>Sign Up</h3>
+        <form ng-submit="ctrl.createUser()">
+          Username: <input type="text" ng-model="ctrl.createdUsername" />
+          Password: <input type="password" ng-model="ctrl.createdPassword" />
+          <input type="submit" value="Create"/>
+        </form>
+        <h3>Log In</h3>
+        <form ng-submit="ctrl.logIn()">
+          Username: <input type="text" ng-model="ctrl.username" />
+          Password: <input type="password" ng-model="ctrl.password" />
+          <input type="submit" value="Log In" />
+        </form>
       </div>
-    </div>
+      <div>
+        <h3>Add an Item</h3>
+        <form ng-submit="ctrl.addItem()">
+          Name <input type="text" ng-model="ctrl.name"/>
+          Description <input type="text" ng-model="ctrl.description"/>
+          Cost <input type="number" ng-model="ctrl.cost"/>
+          Image <input type="text" ng-model="ctrl.image"/>
+          In Stock <input type="checkbox" ng-model="ctrl.inStock"/>
+          <input type="submit" value="add item" />
+        </form>
+      </div>
+      <div class="showAllItems">
+        <div ng-repeat="item in ctrl.items">
+          <ul>
+            <li>{{ item.name }}</li>
+            <li>{{ item.description }}</li>
+            <li>{{ item.cost }}</li>
+            <li>{{ item.image }}</li>
+            <li>{{ item.inStock }}</li>
+          </ul>
+        </div>
+      </div>
+    </main>
+    <!-- ======================
+    | | FOOTER
+    ======================= -->
+    <footer>
+      <h6>Created By: Yulli & Becka, 2019</h6>
+    </footer>
   </body>
 </html>
