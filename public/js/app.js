@@ -31,6 +31,7 @@ app.controller("MainController", ["$http", function($http) {
       }
     }).then(function(response) {
       console.log(response.data);
+      controller.isLoggedIn();
       controller.username = null;
       controller.password = null;
     }, function(error) {
@@ -44,6 +45,18 @@ app.controller("MainController", ["$http", function($http) {
       url: "/sessions"
     }).then(function(response) {
       console.log(response.data);
+    }, function(error) {
+      console.log(error);
+    });
+  };
+
+  this.isLoggedIn = function () {
+    $http({
+      method: "GET",
+      url: "/loggedin"
+    }).then(function(response) {
+      console.log("I am a user, hear me roar!");
+      controller.loggedInUser = response.data.username;
     }, function(error) {
       console.log(error);
     });
