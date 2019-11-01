@@ -3,13 +3,48 @@ const app = angular.module('shoppingCart', []);
 app.controller("MainController", ["$http", function($http) {
   const controller = this;
 
-  this.getItems = function() {
+  this.createUser = function () {
+    $http({
+      method: "POST",
+      url: "/users",
+      data: {
+              username: this.createdUsername,
+              password: this.createdPassword,
+              isAdmin: false
+      }
+    }).then(function (response) {
+      console.log(response.data);
+      this.createdUsername = null;
+      this.createdPassword = null;
+    }, function (error) {
+      console.log(error);
+    });
+  };
+
+  this.logIn = function () {
+    $http({
+      method: "POST",
+      url: "/sessions",
+      data: {
+              username: this.username,
+              password: this.password
+      }
+    }).then(function (response) {
+      console.log(response.data);
+      this.username = null;
+      this.password = null;
+    }, function (error) {
+      console.log(error);
+    });
+  };
+
+  this.getItems = function () {
     $http({
       method: "GET",
       url: "/items"
-    }).then(function(response) {
+    }).then(function (response) {
       controller.items = response.data;
-    }, function(error) {
+    }, function (error) {
       console.log(error);
     });
   };
