@@ -2,6 +2,8 @@ const app = angular.module('shoppingCart', []);
 
 app.controller("MainController", ["$http", function($http) {
   const controller = this;
+  this.showNewForm = false;
+  this.showLogInForm = false;
 
   this.createUser = function () {
     $http({
@@ -16,6 +18,7 @@ app.controller("MainController", ["$http", function($http) {
       console.log(response.data);
       controller.createdUsername = null;
       controller.createdPassword = null;
+      controller.showNewForm = false;
     }, function(error) {
       console.log(error);
     });
@@ -34,6 +37,7 @@ app.controller("MainController", ["$http", function($http) {
       controller.isLoggedIn();
       controller.username = null;
       controller.password = null;
+      controller.showLogInForm = false;
     }, function(error) {
       console.log(error);
     });
@@ -57,6 +61,7 @@ app.controller("MainController", ["$http", function($http) {
     }).then(function(response) {
       console.log("I am a user, hear me roar!");
       controller.loggedInUser = response.data.username;
+      controller.userIsAdmin = response.data.isAdmin;
     }, function(error) {
       console.log(error);
     });

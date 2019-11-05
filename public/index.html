@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/main.css">
   </head>
   <body ng-controller="MainController as ctrl">
+  <div class="wrapper">
     <!-- ======================
     | | HEADER
     ======================= -->
@@ -27,19 +28,23 @@
       <!-- ===== NAVIGATION ===== -->
       <nav>
         <ul>
-          <li ng-if="!ctrl.loggedInUser">Sign Up</li>
-          <li ng-if="!ctrl.loggedInUser">Log In</li>
+          <li ng-if="!ctrl.loggedInUser"
+              ng-click="ctrl.showNewForm = !ctrl.showNewForm; ctrl.showLogInForm = false"><a href="#">Sign Up</a></li>
+          <li ng-if="!ctrl.loggedInUser"
+              ng-click="ctrl.showLogInForm = !ctrl.showLogInForm; ctrl.showNewForm = false"><a href="#">Log In</a></li>
           <li ng-if="ctrl.loggedInUser"
-              ng-click="ctrl.logOut()">Log Out</li>
+              ng-click="ctrl.logOut()"><a href="#">Log Out</a></li>
         </ul>
       </nav>
-      <div>
+      <div ng-if="ctrl.showNewForm">
         <h3>Sign Up</h3>
         <form ng-submit="ctrl.createUser()">
           Username: <input type="text" ng-model="ctrl.createdUsername" />
           Password: <input type="password" ng-model="ctrl.createdPassword" />
           <input type="submit" value="Create"/>
         </form>
+      </div>
+      <div ng-if="ctrl.showLogInForm">
         <h3>Log In</h3>
         <form ng-submit="ctrl.logIn()">
           Username: <input type="text" ng-model="ctrl.username" />
@@ -47,6 +52,7 @@
           <input type="submit" value="Log In" />
         </form>
       </div>
+      <!-- <div ng-if="ctrl.userIsAdmin"> -->
       <div>
         <h3>Add an Item</h3>
         <form ng-submit="ctrl.addItem()">
@@ -59,14 +65,19 @@
         </form>
       </div>
       <div class="showAllItems">
-        <div ng-repeat="item in ctrl.items">
-          <ul>
-            <li>{{ item.name }}</li>
-            <li>{{ item.description }}</li>
-            <li>{{ item.cost }}</li>
-            <li>{{ item.image }}</li>
-            <li>{{ item.inStock }}</li>
-          </ul>
+        <div  class="itemCard"
+              ng-repeat="item in ctrl.items">
+          <div>
+            <img ng-src={{item.image}}>
+          </div>
+          <div>
+            <ul>
+              <li>{{ item.name }}</li>
+              <li>{{ item.description }}</li>
+              <li>{{ item.cost }}</li>
+              <li>{{ item.inStock }}</li>
+            </ul>
+          </div>
         </div>
       </div>
     </main>
@@ -76,5 +87,6 @@
     <footer>
       <h6>Created By: Yulli & Becka, 2019</h6>
     </footer>
+  </div>
   </body>
 </html>
