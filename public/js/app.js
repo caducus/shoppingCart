@@ -4,6 +4,7 @@ app.controller("MainController", ["$http", function($http) {
   const controller = this;
   this.showNewForm = false;
   this.showLogInForm = false;
+  this.indexOfEditForm = false;
 
   this.createUser = function () {
     $http({
@@ -110,6 +111,7 @@ app.controller("MainController", ["$http", function($http) {
       }
     }).then(function(response) {
       console.log(response.data);
+      controller.indexOfEditForm = !controller.indexOfEditForm
     }, function(error) {
       console.log(error);
     });
