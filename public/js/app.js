@@ -4,7 +4,7 @@ app.controller("MainController", ["$http", function($http) {
   const controller = this;
   this.showNewForm = false;
   this.showLogInForm = false;
-  this.indexOfEditForm = false;
+  this.indexOfEditForm;
 
   this.createUser = function () {
     $http({
