@@ -81,13 +81,14 @@
                   <li>{{ item.inStock }}</li>
                 </ul>
                 <ul class="displayInline">
-                  <li ng-click="ctrl.indexOfEditForm = !ctrl.indexOfEditForm"><a href="#" >Edit</a></li>
+                  <li ng-click="ctrl.indexOfEditForm = item._id"
+                      ng-dblclick="ctrl.indexOfEditForm = null"><a href="#">Edit</a></li>
                   <li ng-click="ctrl.deleteItem(item)"><a href="#">Delete</a></li>
                 </ul>
               </div>
             </div>
             <div  class="itemCardEditForm"
-                  ng-if="ctrl.indexOfEditForm">
+                  ng-if="ctrl.indexOfEditForm === item._id">
               <form ng-submit="ctrl.editItem(item)">
                 Name: <input type="text"
                               ng-value="item.name"
