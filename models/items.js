@@ -13,7 +13,7 @@ const itemSchema = new mongoose.Schema({
   cost: {type: Number, required: true},
   image: String,
   description: String,
-  inStock: Boolean
+  stockQuantity: Number
 });
 
 const Item = mongoose.model("Item", itemSchema);
