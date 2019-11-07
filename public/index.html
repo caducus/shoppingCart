@@ -27,7 +27,7 @@
     <main>
       <!-- ===== NAVIGATION ===== -->
       <nav>
-        <ul>
+        <ul class="displayInline">
           <li ng-if="!ctrl.loggedInUser"
               ng-click="ctrl.showNewForm = !ctrl.showNewForm; ctrl.showLogInForm = false"><a href="#">Sign Up</a></li>
           <li ng-if="!ctrl.loggedInUser"
@@ -64,47 +64,53 @@
           <input type="submit" value="add item" />
         </form>
       </div>
+      <!-- List all items for sale -->
+      <!-- Repeated item cards start here -->
       <div class="showAllItems">
-        <div ng-repeat="item in ctrl.items">
-          <div class="itemCard">
-            <div>
-              <img ng-src={{item.image}}>
+        <div class="itemCard" ng-repeat="item in ctrl.items">
+          <div class="itemCardContainer">
+            <div class="itemCardImageInfo">
+              <div class="itemCardImage">
+                <img ng-src={{item.image}}>
+              </div>
+              <div class="itemCardInfo">
+                <ul>
+                  <li>{{ item.name }}</li>
+                  <li>{{ item.description }}</li>
+                  <li>{{ item.cost }}</li>
+                  <li>{{ item.inStock }}</li>
+                </ul>
+                <ul class="displayInline">
+                  <li ng-click="ctrl.indexOfEditForm = !ctrl.indexOfEditForm"><a href="#" >Edit</a></li>
+                  <li ng-click="ctrl.deleteItem(item)"><a href="#">Delete</a></li>
+                </ul>
+              </div>
             </div>
-            <div>
-              <ul>
-                <li>{{ item.name }}</li>
-                <li>{{ item.description }}</li>
-                <li>{{ item.cost }}</li>
-                <li>{{ item.inStock }}</li>
-              </ul>
-              <ul>
-                <li ng-click="ctrl.indexOfEditForm = !ctrl.indexOfEditForm"><a href="#" >Edit</a></li>
-                <li ng-click="ctrl.deleteItem(item)"><a href="#">Delete</a></li>
-              </ul>
+            <div  class="itemCardEditForm"
+                  ng-if="ctrl.indexOfEditForm">
+              <form ng-submit="ctrl.editItem(item)">
+                Name: <input type="text"
+                              ng-value="item.name"
+                              ng-model="ctrl.updatedName"/>
+                Description: <input type="text"
+                                    ng-value="item.description"
+                                    ng-model="ctrl.updatedDescription"/>
+                Cost: <input type="number"
+                              ng-value="item.cost"
+                              ng-model="ctrl.updatedCost"/>
+                Image: <input type="text"
+                              ng-value="item.image"
+                              ng-model="ctrl.updatedImage"/>
+                inStock: <input type="checkbox"
+                                ng-value="ctrl.inStock"
+                                ng-model="ctrl.updatedStock"/>
+                <input type="submit" value="edit item" />
+              </form>
             </div>
-          </div>
-          <div class="editForm" ng-if="ctrl.indexOfEditForm">
-            <form ng-submit="ctrl.editItem(item)">
-              Name: <input type="text"
-                            ng-value="item.name"
-                            ng-model="ctrl.updatedName"/>
-              Description: <input type="text"
-                                  ng-value="item.description"
-                                  ng-model="ctrl.updatedDescription"/>
-              Cost: <input type="number"
-                            ng-value="item.cost"
-                            ng-model="ctrl.updatedCost"/>
-              Image: <input type="text"
-                            ng-value="item.image"
-                            ng-model="ctrl.updatedImage"/>
-              inStock: <input type="checkbox"
-                              ng-value="ctrl.inStock"
-                              ng-model="ctrl.updatedStock"/>
-              <input type="submit" value="edit item" />
-            </form>
           </div>
         </div>
       </div>
+      <!-- Repeated item cards end here -->
     </main>
     <!-- ======================
     | | FOOTER

@@ -1,3 +1,7 @@
+/* * {
+  border: 1px solid gold;
+} */
+
 /* ==========================
 | | Mobile View
 ========================== */
@@ -9,7 +13,14 @@
   }
 
   ul {
+    margin: 0;
+    padding: 0;
     list-style: none;
+  }
+
+  .displayInline li {
+    display: inline;
+    margin: 0px 10px;
   }
 
   /* ====== header ======= */
@@ -25,15 +36,17 @@
     background-color: lightblue;
   }
 
-  nav li {
-      display: inline;
-      margin: 0px 10px;
+  /* ======== main ======= */
+
+  .showAllItems {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   /* ======= cards ======= */
 
   .itemCard {
-    display: flex;
     margin: 0 auto;
     border: 1px solid grey;
     border-radius: 5px;
@@ -41,8 +54,19 @@
     width: 375px;
   }
 
-  .itemCard img {
+  .itemCardImage {
     width: 150px;
+    display: flex;
+    align-items: center;
+  }
+
+  .itemCardImage img {
+    width: 90%;
+    margin: 2.5px;
+  }
+
+  .itemCardImageInfo {
+    display: flex;
   }
 
 /* ==========================
