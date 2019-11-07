@@ -54,14 +54,18 @@
       </div>
       <!-- <div ng-if="ctrl.userIsAdmin"> -->
       <div>
-        <h3>Add an Item</h3>
         <form ng-submit="ctrl.addItem()">
-          Name <input type="text" ng-model="ctrl.name"/>
-          Description <input type="text" ng-model="ctrl.description"/>
-          Cost <input type="number" ng-model="ctrl.cost"/>
-          Image <input type="text" ng-model="ctrl.image"/>
-          In Stock <input type="checkbox" ng-model="ctrl.inStock"/>
-          <input type="submit" value="add item" />
+          <fieldset>
+            <legend>Add an Item</legend>
+              <input type="text" placeholder="name" ng-model="ctrl.name" />
+              <input type="text" placeholder="description" ng-model="ctrl.description" />
+              <input type="number" placeholder="cost" ng-model="ctrl.cost" />
+              <input type="text" placeholder="image link" ng-model="ctrl.image" />
+              <br>
+              In Stock? <input type="checkbox" ng-model="ctrl.inStock" />
+              <br>
+              <input type="submit" value="add item" />
+          </fieldset>
         </form>
       </div>
       <!-- List all items for sale -->
@@ -90,21 +94,21 @@
             <div  class="itemCardEditForm"
                   ng-if="ctrl.indexOfEditForm === item._id">
               <form ng-submit="ctrl.editItem(item)">
-                Name: <input type="text"
-                              ng-value="item.name"
-                              ng-model="ctrl.updatedName"/>
-                Description: <input type="text"
-                                    ng-value="item.description"
-                                    ng-model="ctrl.updatedDescription"/>
-                Cost: <input type="number"
-                              ng-value="item.cost"
-                              ng-model="ctrl.updatedCost"/>
-                Image: <input type="text"
-                              ng-value="item.image"
-                              ng-model="ctrl.updatedImage"/>
+                <input  type="text"
+                        ng-value="item.name"
+                        ng-model="ctrl.updatedName"/>
+                <input  type="text"
+                        ng-value="item.description"
+                        ng-model="ctrl.updatedDescription"/>
+                <input  type="number"
+                        ng-value="item.cost"
+                        ng-model="ctrl.updatedCost"/>
+                <input  type="text"
+                        ng-value="item.image"
+                        ng-model="ctrl.updatedImage"/><br>
                 inStock: <input type="checkbox"
                                 ng-value="ctrl.inStock"
-                                ng-model="ctrl.updatedStock"/>
+                                ng-model="ctrl.updatedStock"/><br>
                 <input type="submit" value="edit item" />
               </form>
             </div>

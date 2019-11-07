@@ -44,6 +44,16 @@
     justify-content: center;
   }
 
+  /* ======= forms ======= */
+
+  fieldset {
+    border-radius: 5px;
+  }
+
+  input {
+    width: 45%;
+  }
+
   /* ======= cards ======= */
 
   .itemCard {
