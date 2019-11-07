@@ -50,6 +50,8 @@ app.controller("MainController", ["$http", function($http) {
       url: "/sessions"
     }).then(function(response) {
       console.log(response.data);
+      controller.loggedInUser = null;
+      controller.userIsAdmin = null;
     }, function(error) {
       console.log(error);
     });

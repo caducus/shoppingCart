@@ -28,8 +28,7 @@ const userSchema = new mongoose.Schema ({
     address2: String,
     city: String,
     state: String,
-    zipCode: String},
-  }
+    zipCode: String}
 });
 
 const User = mongoose.model("User", userSchema);
