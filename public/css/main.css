@@ -79,6 +79,10 @@
     display: flex;
   }
 
+  .itemCardInfo {
+    align-self: center;
+  }
+
 /* ==========================
 | | Browser View
 ========================== */

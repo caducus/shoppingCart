@@ -52,17 +52,15 @@
           <input type="submit" value="Log In" />
         </form>
       </div>
-      <!-- <div ng-if="ctrl.userIsAdmin"> -->
-      <div>
+      <div ng-if="ctrl.userIsAdmin">
         <form ng-submit="ctrl.addItem()">
           <fieldset>
             <legend>Add an Item</legend>
               <input type="text" placeholder="name" ng-model="ctrl.name" />
               <input type="text" placeholder="description" ng-model="ctrl.description" />
-              <input type="number" placeholder="cost" ng-model="ctrl.cost" />
               <input type="text" placeholder="image link" ng-model="ctrl.image" />
-              <br>
-              In Stock? <input type="checkbox" ng-model="ctrl.inStock" />
+              <input type="number" placeholder="cost" ng-model="ctrl.cost" />
+              <input type="number" placeholder="stockQuantity" ng-model="ctrl.stockQuantity" />
               <br>
               <input type="submit" value="add item" />
           </fieldset>
@@ -81,13 +79,20 @@
                 <ul>
                   <li>{{ item.name }}</li>
                   <li>{{ item.description }}</li>
-                  <li>{{ item.cost }}</li>
-                  <li>{{ item.inStock }}</li>
+                  <li>${{ item.cost }}</li>
+                  <li>In Stock: {{ item.stockQuantity }}</li>
                 </ul>
                 <ul class="displayInline">
-                  <li ng-click="ctrl.indexOfEditForm = item._id"
-                      ng-dblclick="ctrl.indexOfEditForm = null"><a href="#">Edit</a></li>
-                  <li ng-click="ctrl.deleteItem(item)"><a href="#">Delete</a></li>
+                  <li ng-if="ctrl.userIsAdmin"
+                      ng-click="ctrl.indexOfEditForm = item._id"
+                      ng-dblclick="ctrl.indexOfEditForm = null">
+                      <a href="#">Edit</a>
+                  </li>
+                  <li ng-if="ctrl.userIsAdmin"
+                      ng-click="ctrl.deleteItem(item)">
+                      <a href="#">Delete</a>
+                  </li>
+                  <li ng-if="ctrl.loggedInUser"><a href="#">Add to Cart</a></li>
                 </ul>
               </div>
             </div>
@@ -105,10 +110,10 @@
                         ng-model="ctrl.updatedCost"/>
                 <input  type="text"
                         ng-value="item.image"
-                        ng-model="ctrl.updatedImage"/><br>
-                inStock: <input type="checkbox"
-                                ng-value="ctrl.inStock"
-                                ng-model="ctrl.updatedStock"/><br>
+                        ng-model="ctrl.updatedImage"/>
+                <input  type="number"
+                        ng-value="ctrl.stockQuantity"
+                        ng-model="ctrl.updatedStock"/><br>
                 <input type="submit" value="edit item" />
               </form>
             </div>

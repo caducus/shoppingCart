@@ -88,7 +88,7 @@ app.controller("MainController", ["$http", function($http) {
         description: this.description,
         cost: this.cost,
         image: this.image,
-        inStock: this.inStock
+        stockQuantity: this.stockQuantity
       }
     }).then(function(response) {
       console.log(response.data);
@@ -107,7 +107,7 @@ app.controller("MainController", ["$http", function($http) {
         description: this.updatedDescription,
         cost: this.updatedCost,
         image: this.updatedImage,
-        inStock: this.updatedStock
+        stockQuantity: this.updatedStock
       }
     }).then(function(response) {
       console.log(response.data);
