@@ -32,6 +32,9 @@
               ng-click="ctrl.showNewForm = !ctrl.showNewForm; ctrl.showLogInForm = false"><a href="#">Sign Up</a></li>
           <li ng-if="!ctrl.loggedInUser"
               ng-click="ctrl.showLogInForm = !ctrl.showLogInForm; ctrl.showNewForm = false"><a href="#">Log In</a></li>
+          <li ng-if="ctrl.loggedInUser">
+            <a href="#">Cart</a>
+          </li>
           <li ng-if="ctrl.loggedInUser"
               ng-click="ctrl.logOut()"><a href="#">Log Out</a></li>
         </ul>

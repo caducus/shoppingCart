@@ -25,6 +25,21 @@ app.controller("MainController", ["$http", function($http) {
     });
   };
 
+  this.createCart = function (user) {
+    $http({
+      method: "POST",
+      url: "/carts",
+      data: {
+              userId: user,
+              cart: null
+      }
+    }).then(function(response) {
+      console.log(response.data);
+    }, function(error) {
+      console.log(error);
+    });
+  };
+
   this.logIn = function () {
     $http({
       method: "POST",
@@ -65,6 +80,7 @@ app.controller("MainController", ["$http", function($http) {
       console.log("I am a user, hear me roar!");
       controller.loggedInUser = response.data.username;
       controller.userIsAdmin = response.data.isAdmin;
+      controller.createCart(response.data._id)
     }, function(error) {
       console.log(error);
     });
@@ -129,6 +145,8 @@ app.controller("MainController", ["$http", function($http) {
       console.log(error);
     });
   };
+
+
 
   this.getItems();
 
