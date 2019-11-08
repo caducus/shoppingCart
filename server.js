@@ -12,6 +12,7 @@ require("dotenv").config();
 const itemsController = require("./controllers/items.js");
 const sessionsController = require("./controllers/sessions.js");
 const usersController = require("./controllers/users.js");
+const cartsController = require("./controllers/carts.js");
 
 const app = express();
 const db = mongoose.connection;
@@ -57,6 +58,7 @@ app.use(session({
 app.use("/items", itemsController);
 app.use("/sessions", sessionsController);
 app.use("/users", usersController);
+app.use("/carts", cartsController);
 
 // ==========================
 // Routes
