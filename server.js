@@ -75,16 +75,16 @@ app.get("/loggedin", (req, res) => {
   };
 });
 
-app.get("/currentCart", (req, res) => {
-  if (req.params.currentCart) {
-    res.json(req.params.currentCart)
-  } else {
-    res.status(401).json ({
-      status: 401,
-      message: "cart not found"
-    });
-  };
-});
+// app.get("/currentCart", (req, res) => {
+//   if (req.session.currentCart) {
+//     res.json(req.session.currentCart)
+//   } else {
+//     res.status(401).json ({
+//       status: 401,
+//       message: "cart not found"
+//     });
+//   };
+// });
 
 // ==========================
 // Listener

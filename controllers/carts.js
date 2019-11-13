@@ -14,12 +14,12 @@ router.post("/", (req, res) => {
   Cart.find({userId: req.body.userId}, (error, foundCart) => {
     if (foundCart.length) {
       console.log("Cart found.");
-      req.params.currentCart = foundCart;
+      req.session.currentCart = foundCart;
     } else {
       Cart.create(req.body, (error, createdCart) => {
         console.log("Cart created.");
         res.json(createdCart);
-        req.params.currentCart = createdCart;
+        req.session.currentCart = createdCart;
       })
     }
   });

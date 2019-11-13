@@ -7,16 +7,16 @@ app.controller("MainController", ["$http", function($http) {
   this.indexOfEditForm;
 
   //  cart functions
-  this.currentCart = function () {
-    $http({
-      method: "GET",
-      url: "/currentCart"
-    }).then(function(response) {
-      console.log("I have saved the cart informaiton.");
-      console.log(response.data);
-      controller.currentCart = response.data._id;
-    });
-  };
+  // this.currentCart = function () {
+  //   $http({
+  //     method: "GET",
+  //     url: "/currentCart"
+  //   }).then(function(response) {
+  //     console.log("I have saved the cart informaiton.");
+  //     console.log(response.data);
+  //     controller.currentCart = response.data._id;
+  //   });
+  // };
 
   this.createCart = function (user) {
     $http({
@@ -28,7 +28,8 @@ app.controller("MainController", ["$http", function($http) {
       }
     }).then(function(response) {
       console.log(response.data);
-      controller.currentCart();
+      controller.currentCart = response.data._id;
+      // controller.currentCart();
     }, function(error) {
       console.log(error);
     });
@@ -109,7 +110,7 @@ app.controller("MainController", ["$http", function($http) {
       console.log("I am a user, hear me roar!");
       controller.loggedInUser = response.data.username;
       controller.userIsAdmin = response.data.isAdmin;
-      controller.createCart(response.data._id)
+      controller.createCart(response.data._id);
     }, function(error) {
       console.log(error);
     });
