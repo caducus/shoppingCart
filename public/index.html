@@ -95,7 +95,10 @@
                       ng-click="ctrl.deleteItem(item)">
                       <a href="#">Delete</a>
                   </li>
-                  <li ng-if="ctrl.loggedInUser"><a href="#">Add to Cart</a></li>
+                  <li ng-if="ctrl.loggedInUser"
+                      ng-click="ctrl.addToCart(item)">
+                      <a href="#">Add to Cart</a>
+                  </li>
                 </ul>
               </div>
             </div>

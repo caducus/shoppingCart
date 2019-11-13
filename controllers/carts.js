@@ -13,15 +13,27 @@ const Cart = require("../models/carts.js");
 router.post("/", (req, res) => {
   Cart.find({userId: req.body.userId}, (error, foundCart) => {
     if (foundCart.length) {
-      console.log('Cart Found');
+      console.log("Cart found.");
+      req.params.currentCart = foundCart;
     } else {
       Cart.create(req.body, (error, createdCart) => {
-        res.json(createdCart)
+        console.log("Cart created.");
+        res.json(createdCart);
+        req.params.currentCart = createdCart;
       })
     }
   });
 });
 
+// ==========================
+// Put Routes
+// ==========================
+
+router.put("/", (req, res) => {
+  Cart.findByIdAndUpdate(req.params.currentCart, req.body, {new:true}, (error, updatedCart) => {
+    res.json(updatedCart);
+  });
+});
 
 // ==========================
 // Export
