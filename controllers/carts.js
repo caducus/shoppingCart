@@ -4,24 +4,28 @@
 
 const express = require("express");
 const router = express.Router();
+
 const Cart = require("../models/carts.js");
+const Product = require("../models/items.js");
 
 // ==========================
-// Post Route
+// Get Routes
 // ==========================
 
-router.post("/", (req, res) => {
-  Cart.find({userId: req.body.userId}, (error, foundCart) => {
-    if (foundCart.length) {
-      console.log('Cart Found');
-    } else {
-      Cart.create(req.body, (error, createdCart) => {
-        res.json(createdCart)
-      })
-    }
+router.get("/add-to-cart/:id", (req, res) => {
+  let productId = req.params.id;
+  let cart = new Cart(req.session.cart ? req.session.cart : {});
+
+  Product.findById(productId, (error, product) => {
+    if (error) {
+      res.redirect("/");
+    };
+    cart.add(product, product.id);
+    req.session.cart = cart;
+    console.log(req.session.cart);
+    // res.redirect("/");
   });
 });
-
 
 // ==========================
 // Export

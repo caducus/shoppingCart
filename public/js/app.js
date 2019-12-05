@@ -6,6 +6,7 @@ app.controller("MainController", ["$http", function($http) {
   this.showLogInForm = false;
   this.indexOfEditForm;
 
+  // user functions
   this.createUser = function () {
     $http({
       method: "POST",
@@ -20,21 +21,6 @@ app.controller("MainController", ["$http", function($http) {
       controller.createdUsername = null;
       controller.createdPassword = null;
       controller.showNewForm = false;
-    }, function(error) {
-      console.log(error);
-    });
-  };
-
-  this.createCart = function (user) {
-    $http({
-      method: "POST",
-      url: "/carts",
-      data: {
-              userId: user,
-              cart: null
-      }
-    }).then(function(response) {
-      console.log(response.data);
     }, function(error) {
       console.log(error);
     });
@@ -80,12 +66,12 @@ app.controller("MainController", ["$http", function($http) {
       console.log("I am a user, hear me roar!");
       controller.loggedInUser = response.data.username;
       controller.userIsAdmin = response.data.isAdmin;
-      controller.createCart(response.data._id)
     }, function(error) {
       console.log(error);
     });
   };
 
+  // item functions
   this.getItems = function () {
     $http({
       method: "GET",
@@ -145,8 +131,6 @@ app.controller("MainController", ["$http", function($http) {
       console.log(error);
     });
   };
-
-
 
   this.getItems();
 
