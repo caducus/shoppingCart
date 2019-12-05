@@ -1,0 +1,98 @@
+/* * {
+  border: 1px solid gold;
+} */
+
+/* ==========================
+| | Mobile View
+========================== */
+
+  /* ====== general ====== */
+
+  .wrapper {
+    margin: 0 auto;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .displayInline li {
+    display: inline;
+    margin: 0px 10px;
+  }
+
+  /* ====== header ======= */
+
+  header {
+    text-align: center;
+  }
+
+  /* ======== nav ======== */
+
+  nav {
+    text-align: right;
+    background-color: lightblue;
+  }
+
+  /* ======== main ======= */
+
+  .showAllItems {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* ======= forms ======= */
+
+  fieldset {
+    border-radius: 5px;
+  }
+
+  input {
+    width: 45%;
+  }
+
+  /* ======= cards ======= */
+
+  .itemCard {
+    margin: 0 auto;
+    border: 1px solid grey;
+    border-radius: 5px;
+    margin: 5px;
+    width: 375px;
+  }
+
+  .itemCardImage {
+    width: 150px;
+    display: flex;
+    align-items: center;
+  }
+
+  .itemCardImage img {
+    width: 90%;
+    margin: 2.5px;
+  }
+
+  .itemCardImageInfo {
+    display: flex;
+  }
+
+  .itemCardInfo {
+    align-self: center;
+  }
+
+/* ==========================
+| | Browser View
+========================== */
+
+@media only screen and (min-width: 750px) {
+
+  /* ====== general ====== */
+
+  .wrapper {
+    max-width: 800px;
+  }
+
+}
