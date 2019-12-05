@@ -6,49 +6,6 @@ app.controller("MainController", ["$http", function($http) {
   this.showLogInForm = false;
   this.indexOfEditForm;
 
-  //  cart functions
-  // this.currentCart = function () {
-  //   $http({
-  //     method: "GET",
-  //     url: "/currentCart"
-  //   }).then(function(response) {
-  //     console.log("I have saved the cart informaiton.");
-  //     console.log(response.data);
-  //     controller.currentCart = response.data._id;
-  //   });
-  // };
-
-  this.createCart = function (user) {
-    $http({
-      method: "POST",
-      url: "/carts",
-      data: {
-              userId: user,
-              cart: null
-      }
-    }).then(function(response) {
-      console.log(response.data);
-      controller.currentCart = response.data._id;
-      // controller.currentCart();
-    }, function(error) {
-      console.log(error);
-    });
-  };
-
-  this.addToCart = function (item) {
-    $http({
-      method: "PUT",
-      url: "/carts",
-      data: {
-        cart: item
-      }
-    }).then(function(response) {
-      console.log(response.data);
-    }, function(error) {
-      console.log(error);
-    });
-  };
-
   // user functions
   this.createUser = function () {
     $http({
@@ -96,7 +53,6 @@ app.controller("MainController", ["$http", function($http) {
       console.log(response.data);
       controller.loggedInUser = null;
       controller.userIsAdmin = null;
-      controller.currentCart = null;
     }, function(error) {
       console.log(error);
     });
@@ -110,7 +66,6 @@ app.controller("MainController", ["$http", function($http) {
       console.log("I am a user, hear me roar!");
       controller.loggedInUser = response.data.username;
       controller.userIsAdmin = response.data.isAdmin;
-      controller.createCart(response.data._id);
     }, function(error) {
       console.log(error);
     });

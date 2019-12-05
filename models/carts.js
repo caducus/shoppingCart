@@ -1,22 +1,13 @@
 // ==========================
-// Dependencies
+// Cart Function
 // ==========================
 
-const mongoose = require("mongoose");
-
-// ==========================
-// Schema
-// ==========================
-
-const cartSchema = new mongoose.Schema ({
-  userId: {type: String, unique: true},
-  cart: Array,
-});
-
-const Cart = mongoose.model("Cart", cartSchema);
+let cart() => {
+  console.log("I am a placeholder for the cart function.");
+}
 
 // ==========================
 // Export
 // ==========================
 
-module.exports = Cart;
+module.exports = cart;
