@@ -9,6 +9,7 @@ const session = require("express-session")
 require("dotenv").config();
 
 // Controllers
+const cartsController = require("./controllers/carts.js");
 const itemsController = require("./controllers/items.js");
 const sessionsController = require("./controllers/sessions.js");
 const usersController = require("./controllers/users.js");
@@ -54,6 +55,7 @@ app.use(session({
 }));
 
 // paths for controllers
+app.use("/carts", cartsController)
 app.use("/items", itemsController);
 app.use("/sessions", sessionsController);
 app.use("/users", usersController);
