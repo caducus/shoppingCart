@@ -18,12 +18,12 @@ router.get("/add-to-cart/:id", (req, res) => {
 
   Product.findById(productId, (error, product) => {
     if (error) {
-      return res.redirect("/");
+      res.redirect("/");
     };
     cart.add(product, product.id);
     req.session.cart = cart;
     console.log(req.session.cart);
-    res.redirect("/");
+    // res.redirect("/");
   });
 });
 

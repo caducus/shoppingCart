@@ -1,9 +1,9 @@
 // this cart function was created using Academind's shopping cart tutorial, found here: https://www.youtube.com/watch?v=-3vvxn78MH4
 
-module.exports = function Cart() {
-  this.items = 0;
-  this.totalQty = 0;
-  this.totalPrice = 0;
+module.exports = function Cart(oldCart) {
+  this.items = oldCart.items || 0;
+  this.totalQty = oldCart.totalQty || 0;
+  this.totalPrice = oldCart.totalPrice || 0;
 
   this.add = function(item, id) {
     let storedItem = this.items[id];
