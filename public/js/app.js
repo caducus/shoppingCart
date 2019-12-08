@@ -1,10 +1,11 @@
 const app = angular.module('shoppingCart', []);
 
-app.controller("MainController", ["$http", function($http) {
+app.controller("MainController", ["$scope", "$http", function($scope, $http) {
   const controller = this;
   this.showNewForm = false;
   this.showLogInForm = false;
   this.indexOfEditForm;
+  $scope.currentCart = [];
 
   // user functions
   this.createUser = function () {
@@ -130,6 +131,27 @@ app.controller("MainController", ["$http", function($http) {
     }, function(error) {
       console.log(error);
     });
+  };
+
+  // cart functions
+  $scope.addToCart = function (item) {
+    if ($scope.currentCart.length === 0) {
+      item.count = 1;
+      $scope.currentCart.push(item);
+    } else {
+      let duplicateItem = false;
+      for (let i = 0; i < $scope.currentCart.length; i++) {
+        if ($scope.currentCart[i]._id === item._id) {
+          duplicateItem = true;
+          $scope.currentCart[i].count += 1;
+        };
+      };
+      if (!duplicateItem) {
+        item.count = 1;
+        $scope.currentCart.push(item);
+      };
+    };
+    console.log($scope.currentCart);
   };
 
   this.getItems();
