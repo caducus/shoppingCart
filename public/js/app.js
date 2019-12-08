@@ -1,11 +1,11 @@
 const app = angular.module('shoppingCart', []);
 
-app.controller("MainController", ["$http", function($http, $scope) {
+app.controller("MainController", ["$scope", "$http", function($scope, $http) {
   const controller = this;
   this.showNewForm = false;
   this.showLogInForm = false;
   this.indexOfEditForm;
-  this.currentCart = [];
+  $scope.currentCart = [];
 
   // user functions
   this.createUser = function () {
@@ -134,8 +134,8 @@ app.controller("MainController", ["$http", function($http, $scope) {
   };
 
   // cart functions
-  this.addToCart = function (item) {
-    this.currentCart.push(item);
+  $scope.addToCart = function (item) {
+    $scope.currentCart.push(item);
     console.log("I am a function who sort of works.");
     console.log(this.currentCart);
   };
