@@ -1,10 +1,11 @@
 const app = angular.module('shoppingCart', []);
 
-app.controller("MainController", ["$http", function($http) {
+app.controller("MainController", ["$http", function($http, $scope) {
   const controller = this;
   this.showNewForm = false;
   this.showLogInForm = false;
   this.indexOfEditForm;
+  this.currentCart = [];
 
   // user functions
   this.createUser = function () {
@@ -130,6 +131,13 @@ app.controller("MainController", ["$http", function($http) {
     }, function(error) {
       console.log(error);
     });
+  };
+
+  // cart functions
+  this.addToCart = function (item) {
+    this.currentCart.push(item);
+    console.log("I am a function who sort of works.");
+    console.log(this.currentCart);
   };
 
   this.getItems();
