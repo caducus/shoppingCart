@@ -135,9 +135,23 @@ app.controller("MainController", ["$scope", "$http", function($scope, $http) {
 
   // cart functions
   $scope.addToCart = function (item) {
-    $scope.currentCart.push(item);
-    console.log("I am a function who sort of works.");
-    console.log(this.currentCart);
+    if ($scope.currentCart.length === 0) {
+      item.count = 1;
+      $scope.currentCart.push(item);
+    } else {
+      let duplicateItem = false;
+      for (let i = 0; i < $scope.currentCart.length; i++) {
+        if ($scope.currentCart[i]._id === item._id) {
+          duplicateItem = true;
+          $scope.currentCart[i].count += 1;
+        };
+      };
+      if (!duplicateItem) {
+        item.count = 1;
+        $scope.currentCart.push(item);
+      };
+    };
+    console.log($scope.currentCart);
   };
 
   this.getItems();
