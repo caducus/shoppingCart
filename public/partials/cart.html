@@ -1,1 +1,14 @@
-<h1>I am where a shopping cart view will eventually be located, if I don't fail and exlpose in a hot mess of firey doom.</h1>
+<div ng-show="currentCart.length !== 0" class="cart">
+  <div ng-repeat="item in currentCart" class="cartCardContainer">
+    <div class="cartCardImage">
+      <img ng-src="{{ item.image }}"/>
+    </div>
+    <div class="cartCardInfo">
+      <ul>
+        <li>{{ item.name }}</li>
+        <li>qty: {{ item.count }}</li>
+      </ul>
+      <p>${{ item.cost * item.count}}</p>
+    </div>
+  </div>
+</div>
