@@ -31,7 +31,7 @@
         <span ng-if="ctrl.loggedInUser">
           <li ng-if="ctrl.shopView"
               ng-click="ctrl.changeInclude('cart'); ctrl.shopView = false;">
-            <a href="#">Cart</a>
+            <a href="#">Cart</a> {{ ctrl.numberOfItems }}
           </li>
           <li ng-if="!ctrl.shopView"
               ng-click="ctrl.changeInclude('shop'); ctrl.shopView = true">
@@ -42,20 +42,24 @@
       </ul>
     </nav>
     <div ng-if="ctrl.showNewForm">
-      <h3>Sign Up</h3>
-      <form ng-submit="ctrl.createUser()">
-        Username: <input type="text" ng-model="ctrl.createdUsername" />
-        Password: <input type="password" ng-model="ctrl.createdPassword" />
-        <input type="submit" value="Create"/>
-      </form>
+      <fieldset>
+        <legend>Sign Up</legend>
+        <form ng-submit="ctrl.createUser()">
+          <input type="text" placeholder="username" ng-model="ctrl.createdUsername" />
+          <input type="password" placeholder="password" ng-model="ctrl.createdPassword" />
+          <input type="submit" value="Create"/>
+        </form>
+      </fieldset>
     </div>
     <div ng-if="ctrl.showLogInForm">
-      <h3>Log In</h3>
-      <form ng-submit="ctrl.logIn()">
-        Username: <input type="text" ng-model="ctrl.username" />
-        Password: <input type="password" ng-model="ctrl.password" />
-        <input type="submit" value="Log In" />
-      </form>
+      <fieldset>
+        <legend>Log In</legend>
+        <form ng-submit="ctrl.logIn()">
+          <input type="text" placeholder="username" ng-model="ctrl.username" />
+          <input type="password" placeholder="password" ng-model="ctrl.password" />
+          <input type="submit" value="Log In" />
+        </form>
+      </fieldset>
     </div>
     <div ng-if="ctrl.userIsAdmin">
       <form ng-submit="ctrl.addItem()">

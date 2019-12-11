@@ -5,6 +5,7 @@ app.controller("MainController", ["$scope", "$http", function($scope, $http) {
   this.showNewForm = false;
   this.showLogInForm = false;
   this.indexOfEditForm;
+  $scope.numberOfItems = 0;
   $scope.currentCart = [];
 
   // partial navigation
@@ -143,22 +144,35 @@ app.controller("MainController", ["$scope", "$http", function($scope, $http) {
 
   // cart functions
   $scope.addToCart = function (item) {
+    // if the cart does not yet exist,
     if ($scope.currentCart.length === 0) {
+      // add +1 to this item count
       item.count = 1;
+      // push this item to the cart
       $scope.currentCart.push(item);
+    // otherwise, if the cart already exists
     } else {
+      // set duplicateItem to false
       let duplicateItem = false;
+      // loop through the array of items in the cart to see if this item id matches any of the cart item ids
       for (let i = 0; i < $scope.currentCart.length; i++) {
+        // if there is a match, set duplicateItem to true
         if ($scope.currentCart[i]._id === item._id) {
           duplicateItem = true;
+          // add +1 to the duplicate item count
           $scope.currentCart[i].count += 1;
         };
       };
+      // if this item is not a duplicate
       if (!duplicateItem) {
+        // add +1 to this item count
         item.count = 1;
+        // push this item to the cart
         $scope.currentCart.push(item);
       };
     };
+    // add +1 to the total number of items in the cart
+    $scope.numberOfItems += 1;
     console.log($scope.currentCart);
   };
 
