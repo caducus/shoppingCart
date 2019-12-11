@@ -7,6 +7,14 @@ app.controller("MainController", ["$scope", "$http", function($scope, $http) {
   this.indexOfEditForm;
   $scope.currentCart = [];
 
+  // partial navigation
+  this.includePath = "partials/shop.html"
+  this.shopView = true;
+
+  this.changeInclude = (path) => {
+    this.includePath = "partials/" + path + ".html"
+  };
+
   // user functions
   this.createUser = function () {
     $http({
