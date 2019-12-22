@@ -47,27 +47,34 @@
   /* ======= forms ======= */
 
   fieldset {
+    text-align: center;
     border-radius: 5px;
+    margin: 15px 0px;
   }
 
   input {
-    width: 45%;
+    width: 30%;
+    height: 20px;
   }
 
   /* ======= cards ======= */
 
   .itemCard {
     margin: 0 auto;
+    width: 255px;
     border: 1px solid grey;
-    border-radius: 5px;
-    margin: 5px;
-    width: 375px;
+    margin: 2px;
+  }
+
+  .itemCardTitleInfo {
+    text-align: center;
   }
 
   .itemCardImage {
+    margin: 0 auto;
     width: 150px;
     display: flex;
-    align-items: center;
+    justify-content: center;
   }
 
   .itemCardImage img {
@@ -75,12 +82,60 @@
     margin: 2.5px;
   }
 
-  .itemCardImageInfo {
-    display: flex;
+  .itemCardInfo {
+    margin: 20px;
   }
 
-  .itemCardInfo {
+  .itemCardInfo ul {
+    text-align: center;
+  }
+
+  .itemCardInfo li {
+    display: inline;
+    margin: 10px;
+  }
+
+  .addEditDelete li {
+    margin: 0 auto;
+    border: 1px solid black;
+    border-radius: 3px;
+    text-align: center;
+    width: 33%;
+    margin-bottom: 15px;
+  }
+
+  .addEditDelete a {
+    text-decoration: none;
+  }
+
+  /* ======= cart ======= */
+
+  .cart {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .cartCardContainer {
+    display: flex;
+    justify-content: center;
+  }
+
+  .cartCardImage {
+    width: 50px;
     align-self: center;
+  }
+
+  .cartCardImage img{
+    width: 90%;
+    margin: 2.5px;
+  }
+
+  .cartCardInfo {
+    width: 200px;
+  }
+
+  .cartCardInfo li {
+    display: inline;
   }
 
 /* ==========================

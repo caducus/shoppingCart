@@ -4,40 +4,74 @@ mongoose.connect("mongodb://localhost:27017/shoppingCart")
 
 var items = [
   new Item({
-  imagePath: 'images/funny_cat1.jpeg',
-  title: 'Cat Teeth',
+  name: 'Cat Teeth',
+  cost: 249,
+  image: 'images/funny_cat1.jpeg',
   description: 'Give your toothless cat some pearly whites',
-  price: 249
+  stockQuantity: 5
   }),
   new Item({
-  imagePath: 'images/ball_toy.jpeg',
-  title: 'Cat Balls',
+  name: 'Cat Balls',
+  cost: 249,
+  image: 'images/ball_toy.jpeg',
   description: 'Make your cats chase these balls',
-  price: 249
+  stockQuantity: 5
   }),
   new Item({
-  imagePath: 'images/mouse_toy.jpeg',
-  title: 'Cat Mousie',
+  name: 'Cat Mousie',
+  cost: 249,
+  image: 'images/mouse_toy.jpeg',
   description: 'Good practice for hunting these pests',
-  price: 249
+  stockQuantity: 5
   }),
   new Item({
-  imagePath: 'images/scrunchie_toy.jpeg',
-  title: 'Cat Scrunche',
+  name: 'Cat Scrunche',
+  cost: 249,
+  image: 'images/scrunchie_toy.jpeg',
   description: 'Noisy but cats love them',
-  price: 249
+  stockQuantity: 5
   }),
   new Item({
-  imagePath: 'images/tunnel.jpeg',
-  title: 'Cat Tunnel',
+  name: 'Cat Tunnel',
+  cost: 249,
+  image: 'images/tunnel.jpeg',
   description: 'A tunnel for your cats',
-  price: 249
+  stockQuantity: 5
   }),
   new Item({
-  imagePath: 'images/wands.jpeg',
-  title: 'Cat Wands',
+  name: 'Cat Wands',
+  cost: 249,
+  image: 'images/wands.jpeg',
   description: 'Harry Potter Wands for your cats',
-  price: 249
+  stockQuantity: 5
+  }),
+  new Item({
+  name: "catnip-filled mouse",
+  cost: 5,
+  image: 'images/catnip-filled-mouse.jpg',
+  description: "a cute little mouse your cats will go crazy over",
+  stockQuantity: 5
+  }),
+  new Item({
+  name: "cat tower",
+  cost: 199,
+  image: 'images/cat-tower.jpeg',
+  description: "amazing amusement part themed cat tower for your crazy little daredevils",
+  stockQuantity: 5
+  }),
+  new Item({
+  name: "feather on a stick",
+  cost: 8,
+  image: 'images/feather-on-stick.jpg',
+  description: "a timeless classic",
+  stockQuantity: 5
+  }),
+  new Item({
+  name: "self-scratching post",
+  cost: 20,
+  image: 'images/self-pet-station.jpeg',
+  description: "a clever little toy that lets your cat reach those hard to scratch places",
+  stockQuantity: 5
   })
 ];
 
