@@ -61,16 +61,20 @@
 
   .itemCard {
     margin: 0 auto;
+    width: 255px;
     border: 1px solid grey;
-    border-radius: 5px;
-    margin: 5px;
-    width: 375px;
+    margin: 2px;
+  }
+
+  .itemCardTitleInfo {
+    text-align: center;
   }
 
   .itemCardImage {
+    margin: 0 auto;
     width: 150px;
     display: flex;
-    align-items: center;
+    justify-content: center;
   }
 
   .itemCardImage img {
@@ -78,12 +82,30 @@
     margin: 2.5px;
   }
 
-  .itemCardImageInfo {
-    display: flex;
+  .itemCardInfo {
+    margin: 20px;
   }
 
-  .itemCardInfo {
-    align-self: center;
+  .itemCardInfo ul {
+    text-align: center;
+  }
+
+  .itemCardInfo li {
+    display: inline;
+    margin: 10px;
+  }
+
+  .addEditDelete li {
+    margin: 0 auto;
+    border: 1px solid black;
+    border-radius: 3px;
+    text-align: center;
+    width: 33%;
+    margin-bottom: 15px;
+  }
+
+  .addEditDelete a {
+    text-decoration: none;
   }
 
   /* ======= cart ======= */
